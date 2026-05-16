@@ -1,4 +1,4 @@
-# 🎀 Mino - My Notes
+# 🎀 Rehan - My Notes
 
 A beautifully designed personal planning and note-taking web application.
 
