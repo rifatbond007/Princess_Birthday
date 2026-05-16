@@ -1,4 +1,5 @@
 # 🎀 Rehan - My Notes
+[![Netlify Status](https://api.netlify.com/api/v1/badges/f3b937f4-14bc-46d5-9c24-f2ea5fbe201e/deploy-status)](https://app.netlify.com/projects/thriving-choux-b7e1e6/deploys)
 
 A beautifully designed personal planning and note-taking web application.
 
