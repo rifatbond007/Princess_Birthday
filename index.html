@@ -37,10 +37,10 @@
                 </div>
 
                 <nav class="space-y-4 px-2">
-<a href="#" id="calendarBtn" class="flex items-center gap-3 text-gray-400 hover:text-gray-700 text-sm font-medium transition">
-    <i data-lucide="calendar" class="w-4 h-4"></i> Calander
-</a>
-                    <a href="#" class="flex items-center gap-3 text-gray-400 hover:text-gray-700 text-sm font-medium transition">
+                    <a href="#" id="calendarBtn" class="flex items-center gap-3 text-gray-400 hover:text-gray-700 text-sm font-medium transition">
+                        <i data-lucide="calendar" class="w-4 h-4"></i> Calander
+                    </a>
+                    <a href="#" id="archiveBtn" class="flex items-center gap-3 text-gray-400 hover:text-gray-700 text-sm font-medium transition">
                         <i data-lucide="archive" class="w-4 h-4"></i> Archive
                     </a>
                     <a href="#" class="flex items-center gap-3 text-gray-400 hover:text-gray-700 text-sm font-medium transition">
@@ -87,7 +87,7 @@
                 </div>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5">
-                    <div class="bg-[#D3E5F4] p-5 rounded-2xl flex flex-col justify-between aspect-[4/3] relative group cursor-pointer hover:shadow-md transition">
+                    <div id="giftsCard" class="bg-[#D3E5F4] p-5 rounded-2xl flex flex-col justify-between aspect-[4/3] relative group cursor-pointer hover:shadow-md transition">
                         <button class="absolute top-4 right-4 text-gray-700 opacity-60 hover:opacity-100">
                             <i data-lucide="more-horizontal" class="w-5 h-5"></i>
                         </button>
@@ -100,7 +100,7 @@
                         </div>
                     </div>
 
-                    <div class="bg-[#F9DBDB] p-5 rounded-2xl flex flex-col justify-between aspect-[4/3] relative group cursor-pointer hover:shadow-md transition">
+                    <div id="surpriseCard" class="bg-[#F9DBDB] p-5 rounded-2xl flex flex-col justify-between aspect-[4/3] relative group cursor-pointer hover:shadow-md transition">
                         <button class="absolute top-4 right-4 text-gray-700 opacity-60 hover:opacity-100">
                             <i data-lucide="more-horizontal" class="w-5 h-5"></i>
                         </button>
@@ -113,7 +113,7 @@
                         </div>
                     </div>
 
-                    <div class="bg-[#FAF6D7] p-5 rounded-2xl flex flex-col justify-between aspect-[4/3] relative group cursor-pointer hover:shadow-md transition">
+                    <div id="memoriesCard" class="bg-[#FAF6D7] p-5 rounded-2xl flex flex-col justify-between aspect-[4/3] relative group cursor-pointer hover:shadow-md transition">
                         <button class="absolute top-4 right-4 text-gray-700 opacity-60 hover:opacity-100">
                             <i data-lucide="more-horizontal" class="w-5 h-5"></i>
                         </button>
@@ -170,38 +170,9 @@
                     </div>
 
                     <div class="bg-[#E59797] p-5 rounded-2xl flex flex-col justify-between aspect-[3/4] hover:shadow-md transition cursor-pointer">
-                        <!-- <div>
-                            <div class="flex justify-between items-start mb-4">
-                                <span class="text-[10px] text-gray-700 font-medium">12/12/2021</span>
-                                <i data-lucide="sticky-note" class="w-4 h-4 text-gray-800"></i>
-                            </div>
-                            <h3 class="font-bold text-gray-900 text-lg mb-3">Mid test exam</h3>
-                            <p class="text-xs text-gray-800 opacity-80 leading-relaxed line-clamp-6">
-                                Ultrices viverra odio congue lecos felis, libero egestas nunc sagi are masa, elit ornare eget sem veib in ulum.<br><br>
-                                In augue cursus of adipicing felis, diam volutpat mauris, id and
-                            </p>
-                        </div>
-                        <div class="flex items-center gap-1.5 text-[10px] text-gray-700 font-semibold mt-4">
-                            <i data-lucide="clock" class="w-3.5 h-3.5"></i>
-                            <span>10:30 PM, Monday</span>
-                        </div> -->
                     </div>
 
                     <div class="bg-[#79B4DC] p-5 rounded-2xl flex flex-col justify-between aspect-[3/4] hover:shadow-md transition cursor-pointer">
-                        <!-- <div>
-                            <div class="flex justify-between items-start mb-4">
-                                <span class="text-[10px] text-blue-50 font-medium">12/12/2021</span>
-                                <i data-lucide="sticky-note" class="w-4 h-4 text-gray-800"></i>
-                            </div>
-                            <h3 class="font-bold text-gray-900 text-lg mb-3">Jonas's notes</h3>
-                            <p class="text-xs text-blue-950 opacity-80 leading-relaxed line-clamp-6">
-                                Rokity viverra odio congue lecos felis, libero egestas nunc sagi are masa, elit ornare eget sem veib in ulum.
-                            </p>
-                        </div>
-                        <div class="flex items-center gap-1.5 text-[10px] text-blue-950 font-semibold mt-4">
-                            <i data-lucide="clock" class="w-3.5 h-3.5"></i>
-                            <span>04:30 PM, Sunday</span>
-                        </div> -->
                     </div>
 
                     <div class="border-2 border-dashed border-gray-300 rounded-2xl flex flex-col items-center justify-center aspect-[3/4] cursor-pointer hover:border-gray-400 transition bg-transparent">
@@ -226,11 +197,6 @@
 
         </main>
     </div>
-
-    <script src="app.js"></script>
-    <script>
-        lucide.createIcons();
-    </script>
 
     <!-- Calendar Modal -->
     <div id="calendarModal" class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-50 hidden items-center justify-center p-4 transition-all duration-300">
@@ -310,6 +276,162 @@
             </div>
         </div>
     </div>
+
+    <!-- Gifts Popup -->
+    <div id="giftsPopup" class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-50 hidden items-center justify-center p-4 transition-all duration-300">
+        <div class="bg-[#D3E5F4] rounded-[28px] shadow-2xl w-full max-w-md overflow-hidden transform scale-95 opacity-0 transition-all duration-300 gifts-modal-anim flex flex-col">
+            <div class="p-6 pb-4 bg-white/50 border-b border-white/20 flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-[#79B4DC] rounded-xl flex items-center justify-center text-white">
+                        <i data-lucide="gift" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-900 tracking-tight">Gift's</h3>
+                        <span class="text-xs text-gray-500 font-medium">Created: 12/12/2021</span>
+                    </div>
+                </div>
+                <button class="close-popup w-8 h-8 rounded-xl bg-white/60 flex items-center justify-center text-gray-600 hover:bg-white transition ml-2">
+                    <i data-lucide="x" class="w-4 h-4"></i>
+                </button>
+            </div>
+            <div class="p-6">
+                <div class="bg-white/60 rounded-2xl p-4 mb-4">
+                    <h4 class="text-sm font-bold text-gray-800 mb-2">Gift Ideas</h4>
+                    <ul class="text-xs text-gray-600 space-y-2">
+                        <li class="flex items-center gap-2"><i data-lucide="circle" class="w-2 h-2"></i> Add gift suggestions here</li>
+                        <li class="flex items-center gap-2"><i data-lucide="circle" class="w-2 h-2"></i> Track gift purchases</li>
+                        <li class="flex items-center gap-2"><i data-lucide="circle" class="w-2 h-2"></i> Budget planning</li>
+                    </ul>
+                </div>
+                <div class="flex gap-2">
+                    <button class="flex-1 py-2 bg-[#79B4DC] text-white rounded-xl text-sm font-medium hover:opacity-90 transition">Edit</button>
+                    <button class="flex-1 py-2 bg-white text-gray-700 rounded-xl text-sm font-medium hover:bg-gray-100 transition close-popup">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Surprise Popup -->
+    <div id="surprisePopup" class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-50 hidden items-center justify-center p-4 transition-all duration-300">
+        <div class="bg-[#F9DBDB] rounded-[28px] shadow-2xl w-full max-w-md overflow-hidden transform scale-95 opacity-0 transition-all duration-300 surprise-modal-anim flex flex-col">
+            <div class="p-6 pb-4 bg-white/50 border-b border-white/20 flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-[#E59797] rounded-xl flex items-center justify-center text-white">
+                        <i data-lucide="sparkles" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-900 tracking-tight">Surprise</h3>
+                        <span class="text-xs text-gray-500 font-medium">Created: 12/12/2021</span>
+                    </div>
+                </div>
+                <button class="close-popup w-8 h-8 rounded-xl bg-white/60 flex items-center justify-center text-gray-600 hover:bg-white transition ml-2">
+                    <i data-lucide="x" class="w-4 h-4"></i>
+                </button>
+            </div>
+            <div class="p-6">
+                <div class="bg-white/60 rounded-2xl p-4 mb-4">
+                    <h4 class="text-sm font-bold text-gray-800 mb-2">Surprise Plans</h4>
+                    <ul class="text-xs text-gray-600 space-y-2">
+                        <li class="flex items-center gap-2"><i data-lucide="circle" class="w-2 h-2"></i> Plan special surprises</li>
+                        <li class="flex items-center gap-2"><i data-lucide="circle" class="w-2 h-2"></i> Track surprise elements</li>
+                        <li class="flex items-center gap-2"><i data-lucide="circle" class="w-2 h-2"></i> Coordination details</li>
+                    </ul>
+                </div>
+                <div class="flex gap-2">
+                    <button class="flex-1 py-2 bg-[#E59797] text-white rounded-xl text-sm font-medium hover:opacity-90 transition">Edit</button>
+                    <button class="flex-1 py-2 bg-white text-gray-700 rounded-xl text-sm font-medium hover:bg-gray-100 transition close-popup">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Memory's Popup -->
+    <div id="memoriesPopup" class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-50 hidden items-center justify-center p-4 transition-all duration-300">
+        <div class="bg-[#FAF6D7] rounded-[28px] shadow-2xl w-full max-w-md overflow-hidden transform scale-95 opacity-0 transition-all duration-300 memories-modal-anim flex flex-col">
+            <div class="p-6 pb-4 bg-white/50 border-b border-white/20 flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-[#E8E288] rounded-xl flex items-center justify-center text-white">
+                        <i data-lucide="heart" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-900 tracking-tight">Memory's</h3>
+                        <span class="text-xs text-gray-500 font-medium">Created: 12/12/2021</span>
+                    </div>
+                </div>
+                <button class="close-popup w-8 h-8 rounded-xl bg-white/60 flex items-center justify-center text-gray-600 hover:bg-white transition ml-2">
+                    <i data-lucide="x" class="w-4 h-4"></i>
+                </button>
+            </div>
+            <div class="p-6">
+                <div class="bg-white/60 rounded-2xl p-4 mb-4">
+                    <h4 class="text-sm font-bold text-gray-800 mb-2">Memories Collection</h4>
+                    <ul class="text-xs text-gray-600 space-y-2">
+                        <li class="flex items-center gap-2"><i data-lucide="circle" class="w-2 h-2"></i> Store precious moments</li>
+                        <li class="flex items-center gap-2"><i data-lucide="circle" class="w-2 h-2"></i> Photo albums</li>
+                        <li class="flex items-center gap-2"><i data-lucide="circle" class="w-2 h-2"></i> Special moments</li>
+                    </ul>
+                </div>
+                <div class="flex gap-2">
+                    <button class="flex-1 py-2 bg-[#E8E288] text-white rounded-xl text-sm font-medium hover:opacity-90 transition">Edit</button>
+                    <button class="flex-1 py-2 bg-white text-gray-700 rounded-xl text-sm font-medium hover:bg-gray-100 transition close-popup">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Archive Gallery Popup -->
+    <div id="archivePopup" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 hidden items-center justify-center p-4 transition-all duration-300">
+        <div class="bg-gradient-to-br from-white to-gray-50 rounded-3xl shadow-2xl w-full max-w-sm overflow-hidden transform scale-95 opacity-0 transition-all duration-300 archive-modal-anim flex flex-col border border-gray-100">
+            <div class="p-4 pb-3 bg-gradient-to-r from-blue-900 to-blue-800 flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center">
+                        <i data-lucide="images" class="w-4 h-4 text-white"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-base font-bold text-white tracking-tight">Gallery</h3>
+                        <span class="text-[10px] text-blue-100 font-medium">5 Memories</span>
+                    </div>
+                </div>
+                <button id="closeArchive" class="close-archive w-7 h-7 rounded-lg bg-white/20 flex items-center justify-center text-white hover:bg-white/30 transition">
+                    <i data-lucide="x" class="w-4 h-4"></i>
+                </button>
+            </div>
+            <div class="p-4">
+                <div class="grid grid-cols-2 gap-2">
+                    <div class="col-span-2 rounded-xl overflow-hidden aspect-video">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80" alt="Photo 1" class="w-full h-full object-cover hover:scale-110 transition transform duration-300 cursor-pointer">
+                    </div>
+                    <div class="rounded-xl overflow-hidden aspect-square">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80" alt="Photo 2" class="w-full h-full object-cover hover:scale-110 transition transform duration-300 cursor-pointer">
+                    </div>
+                    <div class="rounded-xl overflow-hidden aspect-square">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80" alt="Photo 3" class="w-full h-full object-cover hover:scale-110 transition transform duration-300 cursor-pointer">
+                    </div>
+                    <div class="rounded-xl overflow-hidden aspect-square">
+                        <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=200&q=80" alt="Photo 4" class="w-full h-full object-cover hover:scale-110 transition transform duration-300 cursor-pointer">
+                    </div>
+                    <div class="rounded-xl overflow-hidden aspect-square">
+                        <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=200&q=80" alt="Photo 5" class="w-full h-full object-cover hover:scale-110 transition transform duration-300 cursor-pointer">
+                    </div>
+                </div>
+            </div>
+            <div class="px-4 pb-4">
+                <div class="bg-gray-100 rounded-xl p-3 flex items-center justify-between">
+                    <span class="text-xs font-medium text-gray-600">Swipe to see more</span>
+                    <div class="flex gap-1">
+                        <span class="w-1.5 h-1.5 bg-blue-900 rounded-full"></span>
+                        <span class="w-1.5 h-1.5 bg-gray-300 rounded-full"></span>
+                        <span class="w-1.5 h-1.5 bg-gray-300 rounded-full"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
     <style>
         .modal-open { opacity: 1 !important; transform: scale(1) !important; }
     </style>
