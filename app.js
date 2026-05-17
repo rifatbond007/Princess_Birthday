@@ -134,4 +134,187 @@ document.addEventListener('DOMContentLoaded', function() {
             if (e.target === archivePopup) closeArchivePopup();
         });
     }
+
+    // Menu Dropdown
+    const menuBtn = document.getElementById('menuBtn');
+    const menuDropdown = document.getElementById('menuDropdown');
+    const menuDropdownAnim = menuDropdown ? menuDropdown.querySelector('.menu-dropdown-anim') : null;
+
+    function toggleMenu(e) {
+        e.stopPropagation();
+        if (!menuDropdown) return;
+        
+        const isHidden = menuDropdown.classList.contains('hidden');
+        
+        if (isHidden) {
+            const rect = menuBtn.getBoundingClientRect();
+            menuDropdown.style.left = (rect.right - 180) + 'px';
+            menuDropdown.style.top = (rect.bottom + 4) + 'px';
+            menuDropdown.classList.remove('hidden');
+            setTimeout(function() {
+                if (menuDropdownAnim) menuDropdownAnim.classList.add('opacity-100', 'scale-100');
+                menuDropdownAnim.classList.remove('opacity-0', 'scale-95');
+            }, 10);
+        } else {
+            if (menuDropdownAnim) {
+                menuDropdownAnim.classList.remove('opacity-100', 'scale-100');
+                menuDropdownAnim.classList.add('opacity-0', 'scale-95');
+            }
+            setTimeout(function() {
+                menuDropdown.classList.add('hidden');
+            }, 200);
+        }
+    }
+
+    if (menuBtn) {
+        menuBtn.addEventListener('click', toggleMenu);
+    }
+
+    document.addEventListener('click', function(e) {
+        if (menuDropdown && !menuDropdown.contains(e.target) && e.target !== menuBtn) {
+            if (menuDropdownAnim) {
+                menuDropdownAnim.classList.remove('opacity-100', 'scale-100');
+                menuDropdownAnim.classList.add('opacity-0', 'scale-95');
+            }
+            setTimeout(function() {
+                menuDropdown.classList.add('hidden');
+            }, 200);
+        }
+    });
+
+    // Birthday Corner Password Popup
+    const birthdayCornerBtn = document.getElementById('birthdayCornerBtn');
+    const birthdayPasswordPopup = document.getElementById('birthdayPasswordPopup');
+    const closeBirthdayPwd = document.querySelector('.close-birthday-pwd');
+    const birthdayPasswordAnim = birthdayPasswordPopup ? birthdayPasswordPopup.querySelector('.birthday-password-anim') : null;
+    const passwordInput = document.getElementById('birthdayPassword');
+    const passwordError = document.getElementById('passwordError');
+    const submitPassword = document.getElementById('submitPassword');
+
+    function openBirthdayPasswordPopup() {
+        menuDropdown.classList.add('hidden');
+        if (!birthdayPasswordPopup || !birthdayPasswordAnim) return;
+        birthdayPasswordPopup.classList.remove('hidden');
+        birthdayPasswordPopup.classList.add('flex');
+        lucide.createIcons();
+        setTimeout(function() {
+            birthdayPasswordAnim.classList.add('modal-open');
+        }, 10);
+    }
+
+    function closeBirthdayPasswordPopup() {
+        if (!birthdayPasswordAnim || !birthdayPasswordPopup) return;
+        birthdayPasswordAnim.classList.remove('modal-open');
+        setTimeout(function() {
+            birthdayPasswordPopup.classList.remove('flex');
+            birthdayPasswordPopup.classList.add('hidden');
+            passwordInput.value = '';
+            passwordError.classList.add('hidden');
+        }, 300);
+    }
+
+    if (birthdayCornerBtn) {
+        birthdayCornerBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            openBirthdayPasswordPopup();
+        });
+    }
+
+    if (closeBirthdayPwd) {
+        closeBirthdayPwd.addEventListener('click', closeBirthdayPasswordPopup);
+    }
+
+    if (birthdayPasswordPopup) {
+        birthdayPasswordPopup.addEventListener('click', function(e) {
+            if (e.target === birthdayPasswordPopup) closeBirthdayPasswordPopup();
+        });
+    }
+
+    if (submitPassword) {
+        submitPassword.addEventListener('click', function() {
+            if (passwordInput.value === '2580') {
+                passwordError.classList.add('hidden');
+                closeBirthdayPasswordPopup();
+                setTimeout(function() {
+                    openBirthdayLockedPopup();
+                }, 350);
+            } else {
+                passwordError.classList.remove('hidden');
+            }
+        });
+    }
+
+    if (passwordInput) {
+        passwordInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                submitPassword.click();
+            }
+        });
+    }
+
+    // Birthday Locked Interface with Countdown
+    const birthdayLockedPopup = document.getElementById('birthdayLockedPopup');
+    const closeBirthdayLocked = document.querySelector('.close-birthday-locked');
+    const birthdayLockedAnim = birthdayLockedPopup ? birthdayLockedPopup.querySelector('.birthday-locked-anim') : null;
+
+    function openBirthdayLockedPopup() {
+        if (!birthdayLockedPopup || !birthdayLockedAnim) return;
+        birthdayLockedPopup.classList.remove('hidden');
+        birthdayLockedPopup.classList.add('flex');
+        lucide.createIcons();
+        startCountdown();
+        setTimeout(function() {
+            birthdayLockedAnim.classList.add('modal-open');
+        }, 10);
+    }
+
+    function closeBirthdayLockedPopup() {
+        if (!birthdayLockedAnim || !birthdayLockedPopup) return;
+        birthdayLockedAnim.classList.remove('modal-open');
+        setTimeout(function() {
+            birthdayLockedPopup.classList.remove('flex');
+            birthdayLockedPopup.classList.add('hidden');
+        }, 300);
+    }
+
+    if (closeBirthdayLocked) {
+        closeBirthdayLocked.addEventListener('click', closeBirthdayLockedPopup);
+    }
+
+    if (birthdayLockedPopup) {
+        birthdayLockedPopup.addEventListener('click', function(e) {
+            if (e.target === birthdayLockedPopup) closeBirthdayLockedPopup();
+        });
+    }
+
+    // Countdown to May 28, 2026
+    function startCountdown() {
+        const birthdayDate = new Date('2026-05-28T00:00:00');
+        
+        function updateCountdown() {
+            const now = new Date();
+            const diff = birthdayDate - now;
+            
+            if (diff <= 0) {
+                document.getElementById('daysRemaining').textContent = '0 Days';
+                document.getElementById('hoursRemaining').textContent = '0';
+                document.getElementById('minutesRemaining').textContent = '0';
+                document.getElementById('secondsRemaining').textContent = '0';
+                return;
+            }
+            
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            
+            document.getElementById('daysRemaining').textContent = days + ' Days';
+            document.getElementById('hoursRemaining').textContent = hours;
+            document.getElementById('minutesRemaining').textContent = minutes;
+            document.getElementById('secondsRemaining').textContent = seconds;
+        }
+        
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+    }
 });
