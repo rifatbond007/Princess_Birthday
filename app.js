@@ -287,6 +287,40 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // Canvas Image Click - Flying Penguin
+    const canvasImg = document.getElementById('canvasImg');
+    const profileImg = document.querySelector('main header img');
+    
+    if (canvasImg) {
+        canvasImg.addEventListener('click', function(e) {
+            const penguin = document.createElement('div');
+            penguin.className = 'fixed text-6xl z-50 pointer-events-none';
+            penguin.textContent = '🐧';
+            
+            const profileRect = profileImg.getBoundingClientRect();
+            penguin.style.left = profileRect.left + profileRect.width/2 - 30 + 'px';
+            penguin.style.top = profileRect.top + 'px';
+            penguin.style.transition = 'all 1.5s ease-in-out';
+            
+            document.body.appendChild(penguin);
+            
+            setTimeout(function() {
+                penguin.style.left = window.innerWidth/2 - 40 + 'px';
+                penguin.style.top = '50px';
+                penguin.style.transform = 'scale(1.5)';
+            }, 50);
+            
+            setTimeout(function() {
+                penguin.style.opacity = '0';
+                penguin.style.transform = 'scale(2) rotate(360deg)';
+            }, 1400);
+            
+            setTimeout(function() {
+                penguin.remove();
+            }, 1700);
+        });
+    }
+
     // Countdown to May 28, 2026
     function startCountdown() {
         const birthdayDate = new Date('2026-05-28T00:00:00');
