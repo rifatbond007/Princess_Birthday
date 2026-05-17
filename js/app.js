@@ -279,14 +279,14 @@ function initMobileBottomNav() {
     if (mobileAddBtn) {
         mobileAddBtn.addEventListener('click', function(e) {
             e.preventDefault();
-            const menuBtn = document.getElementById('menuBtn');
-            if (menuBtn) menuBtn.click();
+            const menuButtons = document.querySelectorAll('#menuBtn, .menu-btn');
+            if (menuButtons.length > 0) menuButtons[0].click();
         });
     }
 }
 
 function initMenuDropdown() {
-    const menuBtn = document.getElementById('menuBtn');
+    const menuButtons = document.querySelectorAll('#menuBtn, .menu-btn');
     const menuDropdown = document.getElementById('menuDropdown');
     const menuDropdownAnim = menuDropdown ? menuDropdown.querySelector('.menu-dropdown-anim') : null;
 
@@ -294,11 +294,15 @@ function initMenuDropdown() {
         e.stopPropagation();
         if (!menuDropdown) return;
         
+        const clickedBtn = e.currentTarget;
         const isHidden = menuDropdown.classList.contains('hidden');
         
         if (isHidden) {
-            const rect = menuBtn.getBoundingClientRect();
-            menuDropdown.style.left = (rect.right - 180) + 'px';
+            const rect = clickedBtn.getBoundingClientRect();
+            const dropdownWidth = 180;
+            let leftPos = rect.right - dropdownWidth;
+            if (leftPos < 10) leftPos = rect.left;
+            menuDropdown.style.left = leftPos + 'px';
             menuDropdown.style.top = (rect.bottom + 4) + 'px';
             menuDropdown.classList.remove('hidden');
             setTimeout(function() {
@@ -316,12 +320,15 @@ function initMenuDropdown() {
         }
     }
 
-    if (menuBtn) {
-        menuBtn.addEventListener('click', toggleMenu);
-    }
+    menuButtons.forEach(function(btn) {
+        btn.addEventListener('click', toggleMenu);
+    });
 
     document.addEventListener('click', function(e) {
-        if (menuDropdown && !menuDropdown.contains(e.target) && e.target !== menuBtn) {
+        const isMenuButton = Array.from(menuButtons).some(function(btn) {
+            return btn.contains(e.target);
+        });
+        if (menuDropdown && !menuDropdown.contains(e.target) && !isMenuButton) {
             if (menuDropdownAnim) {
                 menuDropdownAnim.classList.remove('opacity-100', 'scale-100');
                 menuDropdownAnim.classList.add('opacity-0', 'scale-95');

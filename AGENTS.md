@@ -12,14 +12,15 @@ Simple static HTML project - no build system, tests, or complex tooling.
 ├── js/
 │   └── app.js       # Main application logic
 ├── components/      # Modular UI components (loaded dynamically)
+│   ├── archive-popup.html
+│   ├── birthday-locked-popup.html
+│   ├── birthday-password-popup.html
 │   ├── calendar-modal.html
 │   ├── gifts-popup.html
-│   ├── surprise-popup.html
 │   ├── memories-popup.html
-│   ├── archive-popup.html
 │   ├── menu-dropdown.html
-│   ├── birthday-password-popup.html
-│   └── birthday-locked-popup.html
+│   ├── surprise-popup.html
+│   └── trash-popup.html
 └── images/
     ├── canvas.png
     └── image.png
@@ -37,7 +38,7 @@ Simple static HTML project - no build system, tests, or complex tooling.
    ```bash
    python -m http.server 8000
    ```
-2. Open `http://localhost:8000` in browser
+2. Open `http://localhost:8000` in browser (serves index.html)
 
 **Note**: Components are loaded via fetch(). Opening directly as `file://` won't load modals.
 
