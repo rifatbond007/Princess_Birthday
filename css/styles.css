@@ -1,0 +1,12 @@
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+.modal-open {
+    opacity: 1 !important;
+    transform: scale(1) !important;
+}
+
+.menu-dropdown-anim {
+    transition: all 0.2s ease;
+}

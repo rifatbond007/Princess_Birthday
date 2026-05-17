@@ -1,0 +1,49 @@
+<!-- Birthday Locked Interface (After Password) -->
+<div id="birthdayLockedPopup" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 hidden items-center justify-center p-4 transition-all duration-300">
+    <div class="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 rounded-3xl shadow-2xl w-full max-w-sm overflow-hidden transform scale-95 opacity-0 transition-all duration-300 modal-anim flex flex-col border border-gray-700">
+        <div class="p-6 pb-4 bg-gradient-to-r from-blue-900 to-indigo-900 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center">
+                    <i data-lucide="lock" class="w-5 h-5 text-white"></i>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold text-white tracking-tight">Birthday Corner</h3>
+                    <span class="text-[10px] text-blue-200 font-medium">Locked until the big day</span>
+                </div>
+            </div>
+            <button class="close-birthday-locked w-8 h-8 rounded-lg bg-white/20 flex items-center justify-center text-white hover:bg-white/30 transition">
+                <i data-lucide="x" class="w-4 h-4"></i>
+            </button>
+        </div>
+        <div class="p-6 text-center">
+            <div class="w-20 h-20 mx-auto mb-4 bg-gradient-to-br from-amber-400 to-orange-500 rounded-full flex items-center justify-center shadow-lg">
+                <i data-lucide="cake" class="w-10 h-10 text-white"></i>
+            </div>
+            <h2 class="text-xl font-bold text-white mb-1">Countdown to Rehan's Birthday</h2>
+            <p class="text-sm text-gray-400 mb-4">May 28, 2026</p>
+            <div class="bg-gray-800/50 rounded-2xl p-4 mb-4 border border-gray-700">
+                <p id="daysRemaining" class="text-4xl font-bold text-amber-400">10 Days</p>
+                <p class="text-xs text-gray-500 mt-1">remaining until the celebration</p>
+            </div>
+            <div class="flex justify-center gap-4 text-center">
+                <div class="bg-gray-800/50 rounded-xl p-3 min-w-[60px] border border-gray-700">
+                    <p id="hoursRemaining" class="text-lg font-bold text-white">--</p>
+                    <p class="text-[10px] text-gray-500">Hours</p>
+                </div>
+                <div class="bg-gray-800/50 rounded-xl p-3 min-w-[60px] border border-gray-700">
+                    <p id="minutesRemaining" class="text-lg font-bold text-white">--</p>
+                    <p class="text-[10px] text-gray-500">Min</p>
+                </div>
+                <div class="bg-gray-800/50 rounded-xl p-3 min-w-[60px] border border-gray-700">
+                    <p id="secondsRemaining" class="text-lg font-bold text-white">--</p>
+                    <p class="text-[10px] text-gray-500">Sec</p>
+                </div>
+            </div>
+        </div>
+        <div class="px-6 pb-4">
+            <div class="bg-amber-500/20 border border-amber-500/30 rounded-xl p-3 text-center">
+                <p class="text-xs font-medium text-amber-400">🔒 Content locked - Unlock on birthday</p>
+            </div>
+        </div>
+    </div>
+</div>

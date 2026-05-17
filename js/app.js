@@ -1,11 +1,43 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', async function() {
     lucide.createIcons();
+    
+    await loadComponents();
 
-    // Calendar Modal
+    initCalendarModal();
+    initItemPopups();
+    initArchivePopup();
+    initMenuDropdown();
+    initBirthdayCorner();
+    initCanvasAnimation();
+});
+
+async function loadComponents() {
+    const container = document.getElementById('components-container');
+    const components = [
+        'components/calendar-modal.html',
+        'components/gifts-popup.html',
+        'components/surprise-popup.html',
+        'components/memories-popup.html',
+        'components/archive-popup.html',
+        'components/menu-dropdown.html',
+        'components/birthday-password-popup.html',
+        'components/birthday-locked-popup.html'
+    ];
+
+    try {
+        const responses = await Promise.all(components.map(c => fetch(c).then(r => r.text())));
+        container.innerHTML = responses.join('');
+        lucide.createIcons();
+    } catch (e) {
+        console.log('Components loaded via inline HTML');
+    }
+}
+
+function initCalendarModal() {
     const calendarBtn = document.getElementById('calendarBtn');
     const calendarModal = document.getElementById('calendarModal');
     const closeCalendar = document.getElementById('closeCalendar');
-    const modalContainer = calendarModal ? calendarModal.querySelector('.JSON-modal-anim') : null;
+    const modalContainer = calendarModal ? calendarModal.querySelector('.modal-anim') : null;
 
     function openModal() {
         if (!calendarModal || !modalContainer) return;
@@ -42,18 +74,19 @@ document.addEventListener('DOMContentLoaded', function() {
             if (e.target === calendarModal) closeModal();
         });
     }
+}
 
-    // Item Popups (Gifts, Surprise, Memories)
+function initItemPopups() {
     const itemPopups = [
-        { btnId: 'giftsCard', popupId: 'giftsPopup', modalClass: 'gifts-modal-anim' },
-        { btnId: 'surpriseCard', popupId: 'surprisePopup', modalClass: 'surprise-modal-anim' },
-        { btnId: 'memoriesCard', popupId: 'memoriesPopup', modalClass: 'memories-modal-anim' }
+        { btnId: 'giftsCard', popupId: 'giftsPopup' },
+        { btnId: 'surpriseCard', popupId: 'surprisePopup' },
+        { btnId: 'memoriesCard', popupId: 'memoriesPopup' }
     ];
 
     itemPopups.forEach(function(item) {
         const card = document.getElementById(item.btnId);
         const popup = document.getElementById(item.popupId);
-        const modalContainer = popup ? popup.querySelector('.' + item.modalClass) : null;
+        const modalContainer = popup ? popup.querySelector('.modal-anim') : null;
 
         function openItemPopup() {
             if (!popup || !modalContainer) return;
@@ -92,12 +125,13 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
     });
+}
 
-    // Archive Gallery Popup
+function initArchivePopup() {
     const archiveBtn = document.getElementById('archiveBtn');
     const archivePopup = document.getElementById('archivePopup');
     const closeArchive = document.getElementById('closeArchive');
-    const archiveModalContainer = archivePopup ? archivePopup.querySelector('.archive-modal-anim') : null;
+    const archiveModalContainer = archivePopup ? archivePopup.querySelector('.modal-anim') : null;
 
     function openArchivePopup() {
         if (!archivePopup || !archiveModalContainer) return;
@@ -134,8 +168,9 @@ document.addEventListener('DOMContentLoaded', function() {
             if (e.target === archivePopup) closeArchivePopup();
         });
     }
+}
 
-    // Menu Dropdown
+function initMenuDropdown() {
     const menuBtn = document.getElementById('menuBtn');
     const menuDropdown = document.getElementById('menuDropdown');
     const menuDropdownAnim = menuDropdown ? menuDropdown.querySelector('.menu-dropdown-anim') : null;
@@ -181,12 +216,13 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 200);
         }
     });
+}
 
-    // Birthday Corner Password Popup
+function initBirthdayCorner() {
     const birthdayCornerBtn = document.getElementById('birthdayCornerBtn');
     const birthdayPasswordPopup = document.getElementById('birthdayPasswordPopup');
     const closeBirthdayPwd = document.querySelector('.close-birthday-pwd');
-    const birthdayPasswordAnim = birthdayPasswordPopup ? birthdayPasswordPopup.querySelector('.birthday-password-anim') : null;
+    const birthdayPasswordAnim = birthdayPasswordPopup ? birthdayPasswordPopup.querySelector('.modal-anim') : null;
     const passwordInput = document.getElementById('birthdayPassword');
     const passwordError = document.getElementById('passwordError');
     const submitPassword = document.getElementById('submitPassword');
@@ -252,12 +288,15 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Birthday Locked Interface with Countdown
+    initBirthdayLockedPopup();
+}
+
+function initBirthdayLockedPopup() {
     const birthdayLockedPopup = document.getElementById('birthdayLockedPopup');
     const closeBirthdayLocked = document.querySelector('.close-birthday-locked');
-    const birthdayLockedAnim = birthdayLockedPopup ? birthdayLockedPopup.querySelector('.birthday-locked-anim') : null;
+    const birthdayLockedAnim = birthdayLockedPopup ? birthdayLockedPopup.querySelector('.modal-anim') : null;
 
-    function openBirthdayLockedPopup() {
+    window.openBirthdayLockedPopup = function() {
         if (!birthdayLockedPopup || !birthdayLockedAnim) return;
         birthdayLockedPopup.classList.remove('hidden');
         birthdayLockedPopup.classList.add('flex');
@@ -266,7 +305,7 @@ document.addEventListener('DOMContentLoaded', function() {
         setTimeout(function() {
             birthdayLockedAnim.classList.add('modal-open');
         }, 10);
-    }
+    };
 
     function closeBirthdayLockedPopup() {
         if (!birthdayLockedAnim || !birthdayLockedPopup) return;
@@ -286,8 +325,9 @@ document.addEventListener('DOMContentLoaded', function() {
             if (e.target === birthdayLockedPopup) closeBirthdayLockedPopup();
         });
     }
+}
 
-    // Canvas Image Click - Flying Penguin
+function initCanvasAnimation() {
     const canvasImg = document.getElementById('canvasImg');
     const profileImg = document.querySelector('main header img');
     
@@ -320,35 +360,43 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 1700);
         });
     }
+}
 
-    // Countdown to May 28, 2026
-    function startCountdown() {
-        const birthdayDate = new Date('2026-05-28T00:00:00');
+function startCountdown() {
+    const birthdayDate = new Date('2026-05-28T00:00:00');
+    
+    function updateCountdown() {
+        const now = new Date();
+        const diff = birthdayDate - now;
         
-        function updateCountdown() {
-            const now = new Date();
-            const diff = birthdayDate - now;
-            
-            if (diff <= 0) {
-                document.getElementById('daysRemaining').textContent = '0 Days';
-                document.getElementById('hoursRemaining').textContent = '0';
-                document.getElementById('minutesRemaining').textContent = '0';
-                document.getElementById('secondsRemaining').textContent = '0';
-                return;
-            }
-            
-            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-            
-            document.getElementById('daysRemaining').textContent = days + ' Days';
-            document.getElementById('hoursRemaining').textContent = hours;
-            document.getElementById('minutesRemaining').textContent = minutes;
-            document.getElementById('secondsRemaining').textContent = seconds;
+        if (diff <= 0) {
+            const daysEl = document.getElementById('daysRemaining');
+            const hoursEl = document.getElementById('hoursRemaining');
+            const minsEl = document.getElementById('minutesRemaining');
+            const secsEl = document.getElementById('secondsRemaining');
+            if (daysEl) daysEl.textContent = '0 Days';
+            if (hoursEl) hoursEl.textContent = '0';
+            if (minsEl) minsEl.textContent = '0';
+            if (secsEl) secsEl.textContent = '0';
+            return;
         }
         
-        updateCountdown();
-        setInterval(updateCountdown, 1000);
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+        
+        const daysEl = document.getElementById('daysRemaining');
+        const hoursEl = document.getElementById('hoursRemaining');
+        const minsEl = document.getElementById('minutesRemaining');
+        const secsEl = document.getElementById('secondsRemaining');
+        
+        if (daysEl) daysEl.textContent = days + ' Days';
+        if (hoursEl) hoursEl.textContent = hours;
+        if (minsEl) minsEl.textContent = minutes;
+        if (secsEl) secsEl.textContent = seconds;
     }
-});
+    
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+}
