@@ -6,9 +6,12 @@ document.addEventListener('DOMContentLoaded', async function() {
     initCalendarModal();
     initItemPopups();
     initArchivePopup();
+    initTrashPopup();
     initMenuDropdown();
     initBirthdayCorner();
     initCanvasAnimation();
+    initMobileHandlers();
+    initMobileBottomNav();
 });
 
 async function loadComponents() {
@@ -19,6 +22,7 @@ async function loadComponents() {
         'components/surprise-popup.html',
         'components/memories-popup.html',
         'components/archive-popup.html',
+        'components/trash-popup.html',
         'components/menu-dropdown.html',
         'components/birthday-password-popup.html',
         'components/birthday-locked-popup.html'
@@ -35,12 +39,14 @@ async function loadComponents() {
 
 function initCalendarModal() {
     const calendarBtn = document.getElementById('calendarBtn');
-    const calendarModal = document.getElementById('calendarModal');
+    const calendarBtnMobile = document.getElementById('calendarBtnMobile');
+    const calendarBtnNav = document.getElementById('calendarBtnNav');
     const closeCalendar = document.getElementById('closeCalendar');
-    const modalContainer = calendarModal ? calendarModal.querySelector('.modal-anim') : null;
+    const modalContainer = document.querySelector('#calendarModal .modal-anim');
 
     function openModal() {
-        if (!calendarModal || !modalContainer) return;
+        if (!modalContainer) return;
+        const calendarModal = document.getElementById('calendarModal');
         calendarModal.classList.remove('hidden');
         calendarModal.classList.add('flex');
         lucide.createIcons();
@@ -50,7 +56,8 @@ function initCalendarModal() {
     }
 
     function closeModal() {
-        if (!modalContainer || !calendarModal) return;
+        if (!modalContainer) return;
+        const calendarModal = document.getElementById('calendarModal');
         modalContainer.classList.remove('modal-open');
         setTimeout(function() {
             calendarModal.classList.remove('flex');
@@ -58,17 +65,20 @@ function initCalendarModal() {
         }, 300);
     }
 
-    if (calendarBtn) {
-        calendarBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            openModal();
-        });
-    }
+    [calendarBtn, calendarBtnMobile, calendarBtnNav].forEach(btn => {
+        if (btn) {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                openModal();
+            });
+        }
+    });
 
     if (closeCalendar) {
         closeCalendar.addEventListener('click', closeModal);
     }
 
+    const calendarModal = document.getElementById('calendarModal');
     if (calendarModal) {
         calendarModal.addEventListener('click', function(e) {
             if (e.target === calendarModal) closeModal();
@@ -80,7 +90,10 @@ function initItemPopups() {
     const itemPopups = [
         { btnId: 'giftsCard', popupId: 'giftsPopup' },
         { btnId: 'surpriseCard', popupId: 'surprisePopup' },
-        { btnId: 'memoriesCard', popupId: 'memoriesPopup' }
+        { btnId: 'memoriesCard', popupId: 'memoriesPopup' },
+        { btnId: 'giftsCardMobile', popupId: 'giftsPopup' },
+        { btnId: 'surpriseCardMobile', popupId: 'surprisePopup' },
+        { btnId: 'memoriesCardMobile', popupId: 'memoriesPopup' }
     ];
 
     itemPopups.forEach(function(item) {
@@ -129,8 +142,10 @@ function initItemPopups() {
 
 function initArchivePopup() {
     const archiveBtn = document.getElementById('archiveBtn');
-    const archivePopup = document.getElementById('archivePopup');
+    const archiveBtnMobile = document.getElementById('archiveBtnMobile');
+    const archiveBtnNav = document.getElementById('archiveBtnNav');
     const closeArchive = document.getElementById('closeArchive');
+    const archivePopup = document.getElementById('archivePopup');
     const archiveModalContainer = archivePopup ? archivePopup.querySelector('.modal-anim') : null;
 
     function openArchivePopup() {
@@ -152,12 +167,14 @@ function initArchivePopup() {
         }, 300);
     }
 
-    if (archiveBtn) {
-        archiveBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            openArchivePopup();
-        });
-    }
+    [archiveBtn, archiveBtnMobile, archiveBtnNav].forEach(btn => {
+        if (btn) {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                openArchivePopup();
+            });
+        }
+    });
 
     if (closeArchive) {
         closeArchive.addEventListener('click', closeArchivePopup);
@@ -166,6 +183,104 @@ function initArchivePopup() {
     if (archivePopup) {
         archivePopup.addEventListener('click', function(e) {
             if (e.target === archivePopup) closeArchivePopup();
+        });
+    }
+}
+
+function initTrashPopup() {
+    const trashBtn = document.getElementById('trashBtn');
+    const mobileTrashBtn = document.getElementById('mobileTrashBtn');
+    const trashPopup = document.getElementById('trashPopup');
+    const trashModalContainer = trashPopup ? trashPopup.querySelector('.modal-anim') : null;
+
+    function openTrashPopup() {
+        if (!trashPopup || !trashModalContainer) return;
+        trashPopup.classList.remove('hidden');
+        trashPopup.classList.add('flex');
+        lucide.createIcons();
+        setTimeout(function() {
+            trashModalContainer.classList.add('modal-open');
+        }, 10);
+    }
+
+    function closeTrashPopup() {
+        if (!trashModalContainer || !trashPopup) return;
+        trashModalContainer.classList.remove('modal-open');
+        setTimeout(function() {
+            trashPopup.classList.remove('flex');
+            trashPopup.classList.add('hidden');
+        }, 300);
+    }
+
+    [trashBtn, mobileTrashBtn].forEach(btn => {
+        if (btn) {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                openTrashPopup();
+            });
+        }
+    });
+
+    const closeBtn = trashPopup ? trashPopup.querySelector('.close-popup') : null;
+    if (closeBtn) {
+        closeBtn.addEventListener('click', closeTrashPopup);
+    }
+
+    if (trashPopup) {
+        trashPopup.addEventListener('click', function(e) {
+            if (e.target === trashPopup) closeTrashPopup();
+        });
+    }
+}
+
+function initMobileBottomNav() {
+    const mobileCalendarBtn = document.getElementById('mobileCalendarBtn');
+    const mobileArchiveBtn = document.getElementById('mobileArchiveBtn');
+    const mobileTrashBtn = document.getElementById('mobileTrashBtn');
+    const mobileAddBtn = document.getElementById('mobileAddBtn');
+    
+    const calendarModal = document.getElementById('calendarModal');
+    const archivePopup = document.getElementById('archivePopup');
+    const trashPopup = document.getElementById('trashPopup');
+    
+    function openModal(modal) {
+        if (!modal) return;
+        const modalContainer = modal.querySelector('.modal-anim');
+        if (!modalContainer) return;
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+        lucide.createIcons();
+        setTimeout(function() {
+            modalContainer.classList.add('modal-open');
+        }, 10);
+    }
+
+    if (mobileCalendarBtn) {
+        mobileCalendarBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            openModal(calendarModal);
+        });
+    }
+
+    if (mobileArchiveBtn) {
+        mobileArchiveBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            openModal(archivePopup);
+        });
+    }
+
+    if (mobileTrashBtn) {
+        mobileTrashBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            openModal(trashPopup);
+        });
+    }
+
+    if (mobileAddBtn) {
+        mobileAddBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            const menuBtn = document.getElementById('menuBtn');
+            if (menuBtn) menuBtn.click();
         });
     }
 }
@@ -228,7 +343,8 @@ function initBirthdayCorner() {
     const submitPassword = document.getElementById('submitPassword');
 
     function openBirthdayPasswordPopup() {
-        menuDropdown.classList.add('hidden');
+        const menuDropdown = document.getElementById('menuDropdown');
+        if (menuDropdown) menuDropdown.classList.add('hidden');
         if (!birthdayPasswordPopup || !birthdayPasswordAnim) return;
         birthdayPasswordPopup.classList.remove('hidden');
         birthdayPasswordPopup.classList.add('flex');
@@ -244,8 +360,8 @@ function initBirthdayCorner() {
         setTimeout(function() {
             birthdayPasswordPopup.classList.remove('flex');
             birthdayPasswordPopup.classList.add('hidden');
-            passwordInput.value = '';
-            passwordError.classList.add('hidden');
+            if (passwordInput) passwordInput.value = '';
+            if (passwordError) passwordError.classList.add('hidden');
         }, 300);
     }
 
@@ -268,21 +384,21 @@ function initBirthdayCorner() {
 
     if (submitPassword) {
         submitPassword.addEventListener('click', function() {
-            if (passwordInput.value === '2580') {
+            if (passwordInput && passwordInput.value === '2580') {
                 passwordError.classList.add('hidden');
                 closeBirthdayPasswordPopup();
                 setTimeout(function() {
                     openBirthdayLockedPopup();
                 }, 350);
             } else {
-                passwordError.classList.remove('hidden');
+                if (passwordError) passwordError.classList.remove('hidden');
             }
         });
     }
 
     if (passwordInput) {
         passwordInput.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
+            if (e.key === 'Enter' && submitPassword) {
                 submitPassword.click();
             }
         });
@@ -337,7 +453,7 @@ function initCanvasAnimation() {
             penguin.className = 'fixed text-6xl z-50 pointer-events-none';
             penguin.textContent = '🐧';
             
-            const profileRect = profileImg.getBoundingClientRect();
+            const profileRect = profileImg ? profileImg.getBoundingClientRect() : { left: window.innerWidth/2, top: 100, width: 32 };
             penguin.style.left = profileRect.left + profileRect.width/2 - 30 + 'px';
             penguin.style.top = profileRect.top + 'px';
             penguin.style.transition = 'all 1.5s ease-in-out';
@@ -360,6 +476,18 @@ function initCanvasAnimation() {
             }, 1700);
         });
     }
+}
+
+function initMobileHandlers() {
+    // Mobile sidebar close on escape
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            const sidebar = document.getElementById('mobileSidebar');
+            if (sidebar && !sidebar.classList.contains('hidden')) {
+                closeMobileSidebar();
+            }
+        }
+    });
 }
 
 function startCountdown() {
@@ -399,4 +527,11 @@ function startCountdown() {
     
     updateCountdown();
     setInterval(updateCountdown, 1000);
+}
+
+function closeMobileSidebar() {
+    const sidebar = document.getElementById('mobileSidebar');
+    const panel = document.getElementById('sidebarPanel');
+    if (panel) panel.classList.add('-translate-x-full');
+    if (sidebar) setTimeout(() => sidebar.classList.add('hidden'), 300);
 }

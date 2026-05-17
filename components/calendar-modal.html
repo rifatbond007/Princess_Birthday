@@ -1,77 +1,77 @@
 <!-- Calendar Modal -->
-<div id="calendarModal" class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-50 hidden items-center justify-center p-4 transition-all duration-300">
-    <div class="bg-white rounded-[28px] shadow-2xl w-full max-w-md overflow-hidden transform scale-95 opacity-0 transition-all duration-300 modal-anim flex flex-col">
-        <div class="p-6 pb-4 bg-[#F7F9FC] border-b border-gray-100 flex items-center justify-between">
+<div id="calendarModal" class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-50 hidden items-center justify-center p-3 md:p-4 transition-all duration-300">
+    <div class="bg-white rounded-2xl md:rounded-[28px] shadow-2xl w-full max-w-md overflow-hidden transform scale-95 opacity-0 transition-all duration-300 modal-anim flex flex-col max-h-[90vh] md:max-h-none">
+        <div class="p-4 md:p-6 pb-3 md:pb-4 bg-[#F7F9FC] border-b border-gray-100 flex items-center justify-between">
             <div>
-                <h3 class="text-xl font-bold text-gray-900 tracking-tight">May 2026</h3>
-                <span class="text-xs text-gray-500 font-medium">1 Event Scheduled</span>
+                <h3 class="text-lg md:text-xl font-bold text-gray-900 tracking-tight">May 2026</h3>
+                <span class="text-[10px] md:text-xs text-gray-500 font-medium">1 Event Scheduled</span>
             </div>
-            <div class="flex items-center gap-2">
-                <button class="w-8 h-8 rounded-xl bg-white border border-gray-100 flex items-center justify-center text-gray-500 hover:text-gray-800 hover:shadow-sm transition">
-                    <i data-lucide="chevron-left" class="w-4 h-4"></i>
+            <div class="flex items-center gap-1 md:gap-2">
+                <button class="w-7 h-7 md:w-8 md:h-8 rounded-lg md:rounded-xl bg-white border border-gray-100 flex items-center justify-center text-gray-500 hover:text-gray-800 hover:shadow-sm transition">
+                    <i data-lucide="chevron-left" class="w-3 h-3 md:w-4 md:h-4"></i>
                 </button>
-                <button class="w-8 h-8 rounded-xl bg-white border border-gray-100 flex items-center justify-center text-gray-500 hover:text-gray-800 hover:shadow-sm transition">
-                    <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                <button class="w-7 h-7 md:w-8 md:h-8 rounded-lg md:rounded-xl bg-white border border-gray-100 flex items-center justify-center text-gray-500 hover:text-gray-800 hover:shadow-sm transition">
+                    <i data-lucide="chevron-right" class="w-3 h-3 md:w-4 md:h-4"></i>
                 </button>
-                <button id="closeCalendar" class="w-8 h-8 rounded-xl bg-gray-200/60 flex items-center justify-center text-gray-600 hover:bg-gray-200 transition ml-2">
-                    <i data-lucide="x" class="w-4 h-4"></i>
+                <button id="closeCalendar" class="w-7 h-7 md:w-8 md:h-8 rounded-lg md:rounded-xl bg-gray-200/60 flex items-center justify-center text-gray-600 hover:bg-gray-200 transition ml-1 md:ml-2">
+                    <i data-lucide="x" class="w-3 h-3 md:w-4 md:h-4"></i>
                 </button>
             </div>
         </div>
-        <div class="p-6">
-            <div class="grid grid-cols-7 gap-y-2 text-center text-xs font-bold text-gray-400 uppercase tracking-wider mb-3">
+        <div class="p-3 md:p-6 overflow-y-auto">
+            <div class="grid grid-cols-7 gap-y-1 md:gap-y-2 text-center text-[10px] md:text-xs font-bold text-gray-400 uppercase tracking-wider mb-2 md:mb-3">
                 <div>Su</div><div>Mo</div><div>Tu</div><div>We</div><div>Th</div><div>Fr</div><div>Sa</div>
             </div>
-            <div class="grid grid-cols-7 gap-x-1 gap-y-2 text-center text-sm font-medium text-gray-700">
-                <div class="text-gray-300 py-2">26</div>
-                <div class="text-gray-300 py-2">27</div>
-                <div class="text-gray-300 py-2">28</div>
-                <div class="text-gray-300 py-2">29</div>
-                <div class="text-gray-300 py-2">30</div>
-                <div class="py-2 hover:bg-gray-100 rounded-xl cursor-pointer transition">1</div>
-                <div class="py-2 hover:bg-gray-100 rounded-xl cursor-pointer transition">2</div>
-                <div class="py-2 hover:bg-gray-100 rounded-xl cursor-pointer transition">3</div>
-                <div class="py-2 hover:bg-gray-100 rounded-xl cursor-pointer transition">4</div>
-                <div class="py-2 hover:bg-gray-100 rounded-xl cursor-pointer transition">5</div>
-                <div class="py-2 hover:bg-gray-100 rounded-xl cursor-pointer transition">6</div>
-                <div class="py-2 hover:bg-gray-100 rounded-xl cursor-pointer transition">7</div>
-                <div class="py-2 hover:bg-gray-100 rounded-xl cursor-pointer transition">8</div>
-                <div class="py-2 hover:bg-gray-100 rounded-xl cursor-pointer transition">9</div>
-                <div class="py-2 hover:bg-gray-100 rounded-xl cursor-pointer transition">10</div>
-                <div class="py-2 hover:bg-gray-100 rounded-xl cursor-pointer transition">11</div>
-                <div class="py-2 hover:bg-gray-100 rounded-xl cursor-pointer transition">12</div>
-                <div class="py-2 hover:bg-gray-100 rounded-xl cursor-pointer transition">13</div>
-                <div class="py-2 hover:bg-gray-100 rounded-xl cursor-pointer transition">14</div>
-                <div class="py-2 hover:bg-gray-100 rounded-xl cursor-pointer transition">15</div>
-                <div class="py-2 hover:bg-gray-100 rounded-xl cursor-pointer transition">16</div>
-                <div class="py-2 bg-blue-900 text-white rounded-xl font-bold shadow-md shadow-blue-950/20 relative cursor-pointer">17</div>
-                <div class="py-2 hover:bg-gray-100 rounded-xl cursor-pointer transition">18</div>
-                <div class="py-2 hover:bg-gray-100 rounded-xl cursor-pointer transition">19</div>
-                <div class="py-2 hover:bg-gray-100 rounded-xl cursor-pointer transition">20</div>
-                <div class="py-2 hover:bg-gray-100 rounded-xl cursor-pointer transition">21</div>
-                <div class="py-2 hover:bg-gray-100 rounded-xl cursor-pointer transition">22</div>
-                <div class="py-2 hover:bg-gray-100 rounded-xl cursor-pointer transition">23</div>
-                <div class="py-2 hover:bg-gray-100 rounded-xl cursor-pointer transition">24</div>
-                <div class="py-2 hover:bg-gray-100 rounded-xl cursor-pointer transition">25</div>
-                <div class="py-2 hover:bg-gray-100 rounded-xl cursor-pointer transition">26</div>
-                <div class="py-2 hover:bg-gray-100 rounded-xl cursor-pointer transition">27</div>
-                <div class="py-2 bg-[#F9DBDB] text-red-600 rounded-xl font-bold border-2 border-[#E59797] relative cursor-pointer group/day transition hover:scale-105">
+            <div class="grid grid-cols-7 gap-x-0.5 md:gap-x-1 gap-y-1 md:gap-y-2 text-center text-xs md:text-sm font-medium text-gray-700">
+                <div class="text-gray-300 py-1 md:py-2">26</div>
+                <div class="text-gray-300 py-1 md:py-2">27</div>
+                <div class="text-gray-300 py-1 md:py-2">28</div>
+                <div class="text-gray-300 py-1 md:py-2">29</div>
+                <div class="text-gray-300 py-1 md:py-2">30</div>
+                <div class="py-1 md:py-2 hover:bg-gray-100 rounded-lg md:rounded-xl cursor-pointer transition text-xs">1</div>
+                <div class="py-1 md:py-2 hover:bg-gray-100 rounded-lg md:rounded-xl cursor-pointer transition text-xs">2</div>
+                <div class="py-1 md:py-2 hover:bg-gray-100 rounded-lg md:rounded-xl cursor-pointer transition text-xs">3</div>
+                <div class="py-1 md:py-2 hover:bg-gray-100 rounded-lg md:rounded-xl cursor-pointer transition text-xs">4</div>
+                <div class="py-1 md:py-2 hover:bg-gray-100 rounded-lg md:rounded-xl cursor-pointer transition text-xs">5</div>
+                <div class="py-1 md:py-2 hover:bg-gray-100 rounded-lg md:rounded-xl cursor-pointer transition text-xs">6</div>
+                <div class="py-1 md:py-2 hover:bg-gray-100 rounded-lg md:rounded-xl cursor-pointer transition text-xs">7</div>
+                <div class="py-1 md:py-2 hover:bg-gray-100 rounded-lg md:rounded-xl cursor-pointer transition text-xs">8</div>
+                <div class="py-1 md:py-2 hover:bg-gray-100 rounded-lg md:rounded-xl cursor-pointer transition text-xs">9</div>
+                <div class="py-1 md:py-2 hover:bg-gray-100 rounded-lg md:rounded-xl cursor-pointer transition text-xs">10</div>
+                <div class="py-1 md:py-2 hover:bg-gray-100 rounded-lg md:rounded-xl cursor-pointer transition text-xs">11</div>
+                <div class="py-1 md:py-2 hover:bg-gray-100 rounded-lg md:rounded-xl cursor-pointer transition text-xs">12</div>
+                <div class="py-1 md:py-2 hover:bg-gray-100 rounded-lg md:rounded-xl cursor-pointer transition text-xs">13</div>
+                <div class="py-1 md:py-2 hover:bg-gray-100 rounded-lg md:rounded-xl cursor-pointer transition text-xs">14</div>
+                <div class="py-1 md:py-2 hover:bg-gray-100 rounded-lg md:rounded-xl cursor-pointer transition text-xs">15</div>
+                <div class="py-1 md:py-2 hover:bg-gray-100 rounded-lg md:rounded-xl cursor-pointer transition text-xs">16</div>
+                <div class="py-1 md:py-2 bg-blue-900 text-white rounded-lg md:rounded-xl font-bold shadow-md shadow-blue-950/20 relative cursor-pointer text-xs">17</div>
+                <div class="py-1 md:py-2 hover:bg-gray-100 rounded-lg md:rounded-xl cursor-pointer transition text-xs">18</div>
+                <div class="py-1 md:py-2 hover:bg-gray-100 rounded-lg md:rounded-xl cursor-pointer transition text-xs">19</div>
+                <div class="py-1 md:py-2 hover:bg-gray-100 rounded-lg md:rounded-xl cursor-pointer transition text-xs">20</div>
+                <div class="py-1 md:py-2 hover:bg-gray-100 rounded-lg md:rounded-xl cursor-pointer transition text-xs">21</div>
+                <div class="py-1 md:py-2 hover:bg-gray-100 rounded-lg md:rounded-xl cursor-pointer transition text-xs">22</div>
+                <div class="py-1 md:py-2 hover:bg-gray-100 rounded-lg md:rounded-xl cursor-pointer transition text-xs">23</div>
+                <div class="py-1 md:py-2 hover:bg-gray-100 rounded-lg md:rounded-xl cursor-pointer transition text-xs">24</div>
+                <div class="py-1 md:py-2 hover:bg-gray-100 rounded-lg md:rounded-xl cursor-pointer transition text-xs">25</div>
+                <div class="py-1 md:py-2 hover:bg-gray-100 rounded-lg md:rounded-xl cursor-pointer transition text-xs">26</div>
+                <div class="py-1 md:py-2 hover:bg-gray-100 rounded-lg md:rounded-xl cursor-pointer transition text-xs">27</div>
+                <div class="py-1 md:py-2 bg-[#F9DBDB] text-red-600 rounded-lg md:rounded-xl font-bold border border-[#E59797] relative cursor-pointer group/day transition text-xs">
                     28
-                    <span class="absolute bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 bg-red-500 rounded-full"></span>
+                    <span class="absolute bottom-0.5 left-1/2 -translate-x-1/2 w-1 h-1 bg-red-500 rounded-full"></span>
                 </div>
-                <div class="py-2 hover:bg-gray-100 rounded-xl cursor-pointer transition">29</div>
-                <div class="py-2 hover:bg-gray-100 rounded-xl cursor-pointer transition">30</div>
-                <div class="py-2 hover:bg-gray-100 rounded-xl cursor-pointer transition">31</div>
+                <div class="py-1 md:py-2 hover:bg-gray-100 rounded-lg md:rounded-xl cursor-pointer transition text-xs">29</div>
+                <div class="py-1 md:py-2 hover:bg-gray-100 rounded-lg md:rounded-xl cursor-pointer transition text-xs">30</div>
+                <div class="py-1 md:py-2 hover:bg-gray-100 rounded-lg md:rounded-xl cursor-pointer transition text-xs">31</div>
             </div>
         </div>
-        <div class="mx-6 mb-6 p-4 bg-gradient-to-r from-rose-50 to-amber-50 border border-rose-100 rounded-2xl flex items-start gap-3">
-            <div class="w-8 h-8 bg-[#E59797] rounded-xl flex items-center justify-center text-white shrink-0 mt-0.5">
-                <i data-lucide="cake" class="w-4 h-4"></i>
+        <div class="mx-3 md:mx-6 mb-3 md:mb-6 p-3 md:p-4 bg-gradient-to-r from-rose-50 to-amber-50 border border-rose-100 rounded-xl md:rounded-2xl flex items-start gap-2 md:gap-3">
+            <div class="w-7 h-7 md:w-8 md:h-8 bg-[#E59797] rounded-lg md:rounded-xl flex items-center justify-center text-white shrink-0 mt-0.5">
+                <i data-lucide="cake" class="w-3 h-3 md:w-4 md:h-4"></i>
             </div>
             <div>
-                <span class="text-[10px] font-bold text-rose-700 tracking-wider uppercase block mb-0.5">Thursday, May 28</span>
-                <h4 class="text-sm font-bold text-gray-900">Rehan's Birthday 🎂</h4>
-                <p class="text-xs text-gray-600 mt-1">Don't forget to prepare something spectacular for the big day!</p>
+                <span class="text-[8px] md:text-[10px] font-bold text-rose-700 tracking-wider uppercase block mb-0.5">Thursday, May 28</span>
+                <h4 class="text-xs md:text-sm font-bold text-gray-900">Rehan's Birthday 🎂</h4>
+                <p class="text-[10px] md:text-xs text-gray-600 mt-0.5 md:mt-1">Don't forget to prepare something spectacular!</p>
             </div>
         </div>
     </div>

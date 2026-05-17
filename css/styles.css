@@ -10,3 +10,47 @@ body {
 .menu-dropdown-anim {
     transition: all 0.2s ease;
 }
+
+/* Mobile touch improvements */
+@media (max-width: 1023px) {
+    .touch-manipulation {
+        touch-action: manipulation;
+    }
+    
+    button, a {
+        -webkit-tap-highlight-color: transparent;
+    }
+    
+    .safe-area-pb {
+        padding-bottom: env(safe-area-inset-bottom, 12px);
+    }
+}
+
+/* Prevent horizontal scroll */
+html, body {
+    overflow-x: hidden;
+}
+
+/* Smooth scrolling */
+* {
+    scroll-behavior: smooth;
+}
+
+/* Modal animations */
+.modal-anim {
+    transition: all 0.3s ease;
+}
+
+/* Keyboard focus for accessibility */
+button:focus-visible, a:focus-visible, input:focus-visible {
+    outline: 2px solid #3b82f6;
+    outline-offset: 2px;
+}
+
+/* Active state for bottom nav */
+#mobileCalendarBtn:active i,
+#mobileArchiveBtn:active i,
+#mobileAddBtn:active i,
+#mobileTrashBtn:active i {
+    transform: scale(0.9);
+}
