@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     initCanvasAnimation();
     initMobileHandlers();
     initMobileBottomNav();
+    initSlideNavigation();
 });
 
 async function loadComponents() {
@@ -541,4 +542,56 @@ function closeMobileSidebar() {
     const panel = document.getElementById('sidebarPanel');
     if (panel) panel.classList.add('-translate-x-full');
     if (sidebar) setTimeout(() => sidebar.classList.add('hidden'), 300);
+}
+
+function initSlideNavigation() {
+    const slideContainer = document.getElementById('notesSlideContainer');
+    const slideLeftBtn = document.getElementById('slideLeft');
+    const slideRightBtn = document.getElementById('slideRight');
+    
+    if (!slideContainer) return;
+    
+    const cardWidth = window.innerWidth < 1024 ? 144 + 12 : 192 + 20; // card width + gap
+    
+    if (slideLeftBtn) {
+        slideLeftBtn.addEventListener('click', function() {
+            slideContainer.scrollBy({ left: -cardWidth, behavior: 'smooth' });
+        });
+    }
+    
+    if (slideRightBtn) {
+        slideRightBtn.addEventListener('click', function() {
+            slideContainer.scrollBy({ left: cardWidth, behavior: 'smooth' });
+        });
+    }
+    
+    // Enable drag to scroll
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+    
+    slideContainer.addEventListener('mousedown', function(e) {
+        isDown = true;
+        slideContainer.style.cursor = 'grabbing';
+        startX = e.pageX - slideContainer.offsetLeft;
+        scrollLeft = slideContainer.scrollLeft;
+    });
+    
+    slideContainer.addEventListener('mouseleave', function() {
+        isDown = false;
+        slideContainer.style.cursor = 'grab';
+    });
+    
+    slideContainer.addEventListener('mouseup', function() {
+        isDown = false;
+        slideContainer.style.cursor = 'grab';
+    });
+    
+    slideContainer.addEventListener('mousemove', function(e) {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - slideContainer.offsetLeft;
+        const walk = (x - startX) * 2;
+        slideContainer.scrollLeft = scrollLeft - walk;
+    });
 }

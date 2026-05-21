@@ -54,3 +54,23 @@ button:focus-visible, a:focus-visible, input:focus-visible {
 #mobileTrashBtn:active i {
     transform: scale(0.9);
 }
+
+/* Hide scrollbar but keep functionality */
+.scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+
+/* Slide container cursor */
+#notesSlideContainer {
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+}
+
+#notesCardsWrapper > div {
+    scroll-snap-align: start;
+}
