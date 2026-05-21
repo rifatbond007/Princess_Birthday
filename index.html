@@ -241,7 +241,7 @@
                                 </div>
                                 <div class="flex items-center gap-1 text-[8px] md:text-[10px] text-gray-600 font-semibold mt-2 md:mt-4">
                                     <i data-lucide="clock" class="w-3 h-3 md:w-3.5 md:h-3.5"></i>
-                                    <span>10:37 PM</span>
+                                    <span>10:42 PM</span>
                                 </div>
                             </div>
 
@@ -458,40 +458,202 @@
                     </div>
                 </div>
                 <div class="flex items-center gap-2 text-xs font-medium text-gray-400 self-end">
-                    <button class="hover:text-gray-600"><i data-lucide="chevron-left" class="w-4 h-4"></i></button>
+                    <button id="slideLeftMobile" class="hover:text-gray-600 p-1"><i data-lucide="chevron-left" class="w-4 h-4"></i></button>
                     <span class="text-[10px]">May 2026</span>
-                    <button class="hover:text-gray-600"><i data-lucide="chevron-right" class="w-4 h-4"></i></button>
+                    <button id="slideRightMobile" class="hover:text-gray-600 p-1"><i data-lucide="chevron-right" class="w-4 h-4"></i></button>
                 </div>
             </div>
 
-            <div class="grid grid-cols-2 gap-3">
-                <div class="bg-[#E8E288] p-3 rounded-xl flex flex-col justify-between aspect-[3/4] hover:shadow-md transition cursor-pointer">
-                    <div>
-                        <div class="flex justify-between items-start mb-2">
-                            <span class="text-[8px] text-gray-600 font-medium">17/05/2026</span>
-                            <i data-lucide="sticky-note" class="w-3 h-3 text-gray-800"></i>
+            <!-- Mobile Slide Container -->
+            <div id="notesSlideContainerMobile" class="overflow-x-auto scrollbar-hide -mx-4 px-4">
+                <div class="flex gap-3 pb-2">
+                    <!-- 10 Days to Go -->
+                    <div class="bg-[#E8E288] p-3 rounded-xl flex flex-col justify-between aspect-[3/4] hover:shadow-md transition cursor-pointer shrink-0 w-36">
+                        <div>
+                            <div class="flex justify-between items-start mb-2">
+                                <span class="text-[8px] text-gray-600 font-medium">18/05/2026</span>
+                                <i data-lucide="sticky-note" class="w-3 h-3 text-gray-800"></i>
+                            </div>
+                            <h3 class="font-bold text-gray-900 text-sm mb-2">10 Days to Go</h3>
+                            <p class="text-[8px] text-gray-700 leading-relaxed line-clamp-4">
+                                Princess i would like to request for send me a short snap / pic with glow faces<br><br>
+                                it's a special request for you birthday, pleaseeee!
+                            </p>
                         </div>
-                        <h3 class="font-bold text-gray-900 text-sm mb-2">10 Days to Go</h3>
-                        <p class="text-[8px] text-gray-700 leading-relaxed line-clamp-4">
-                            Princess i would like to request for send me a short snap / pic with glow faces<br><br>
-                            it's a special request for you birthday, pleaseeee!
-                        </p>
+                        <div class="flex items-center gap-1 text-[8px] text-gray-600 font-semibold mt-2">
+                            <i data-lucide="clock" class="w-3 h-3"></i>
+                            <span>10:30 PM</span>
+                        </div>
                     </div>
-                    <div class="flex items-center gap-1 text-[8px] text-gray-600 font-semibold mt-2">
-                        <i data-lucide="clock" class="w-3 h-3"></i>
-                        <span>10:30 PM</span>
+
+                    <!-- 9 Days to Go -->
+                    <div class="bg-[#E59797] p-3 rounded-xl flex flex-col justify-between aspect-[3/4] hover:shadow-md transition cursor-pointer shrink-0 w-36">
+                        <div>
+                            <div class="flex justify-between items-start mb-2">
+                                <span class="text-[8px] text-gray-600 font-medium">19/05/2026</span>
+                                <i data-lucide="sticky-note" class="w-3 h-3 text-gray-800"></i>
+                            </div>
+                            <h3 class="font-bold text-gray-900 text-sm mb-2">9 Days to Go</h3>
+                            <p class="text-[8px] text-gray-700 leading-relaxed line-clamp-4">
+                                I request you to listen to the song. While listening to the song, close your eyes and feel that you want a beautiful dress from me.
+                            </p>
+                            <a href="https://youtu.be/mrdRHsIkK_c?si=hfFoqWxMH0g0pI8I" class="text-[8px] text-blue-500 font-semibold hover:underline">Click Here</a>
+                        </div>
+                        <div class="flex items-center gap-1 text-[8px] text-gray-600 font-semibold mt-2">
+                            <i data-lucide="clock" class="w-3 h-3"></i>
+                            <span>10:49 PM</span>
+                        </div>
                     </div>
-                </div>
 
-                <div class="bg-[#E59797] p-3 rounded-xl flex flex-col justify-between aspect-[3/4] hover:shadow-md transition cursor-pointer">
-                </div>
+                    <!-- 8 Days to Go -->
+                    <div class="bg-[#79B4DC] p-3 rounded-xl flex flex-col justify-between aspect-[3/4] hover:shadow-md transition cursor-pointer shrink-0 w-36">
+                        <div>
+                            <div class="flex justify-between items-start mb-2">
+                                <span class="text-[8px] text-gray-600 font-medium">20/05/2026</span>
+                                <i data-lucide="sticky-note" class="w-3 h-3 text-gray-800"></i>
+                            </div>
+                            <h3 class="font-bold text-gray-900 text-sm mb-2">8 Days to Go</h3>
+                            <p class="text-[8px] text-gray-700 leading-relaxed line-clamp-4">
+                                No plan for this day !
+                            </p>
+                        </div>
+                        <div class="flex items-center gap-1 text-[8px] text-gray-600 font-semibold mt-2">
+                            <i data-lucide="clock" class="w-3 h-3"></i>
+                            <span>11:49 PM</span>
+                        </div>
+                    </div>
 
-                <div class="bg-[#79B4DC] p-3 rounded-xl flex flex-col justify-between aspect-[3/4] hover:shadow-md transition cursor-pointer">
-                </div>
+                    <!-- 7 Days to Go -->
+                    <div class="bg-[#D3E5F4] p-3 rounded-xl flex flex-col justify-between aspect-[3/4] hover:shadow-md transition cursor-pointer shrink-0 w-36">
+                        <div>
+                            <div class="flex justify-between items-start mb-2">
+                                <span class="text-[8px] text-gray-600 font-medium">21/05/2026</span>
+                                <i data-lucide="sticky-note" class="w-3 h-3 text-gray-800"></i>
+                            </div>
+                            <h3 class="font-bold text-gray-900 text-sm mb-2">7 Days to Go</h3>
+                            <p class="text-[8px] text-gray-700 leading-relaxed line-clamp-4">
+                                Waiting for your special day! 🎂
+                            </p>
+                        </div>
+                        <div class="flex items-center gap-1 text-[8px] text-gray-600 font-semibold mt-2">
+                            <i data-lucide="clock" class="w-3 h-3"></i>
+                            <span>09:00 AM</span>
+                        </div>
+                    </div>
 
-                <div class="border-2 border-dashed border-gray-300 rounded-xl flex flex-col items-center justify-center aspect-[3/4] cursor-pointer hover:border-gray-400 transition bg-transparent">
-                    <i data-lucide="file-plus" class="w-5 h-5 text-gray-700 mb-1"></i>
-                    <span class="text-[10px] font-semibold text-gray-700">New Note</span>
+                    <!-- 6 Days to Go -->
+                    <div class="bg-[#FAF6D7] p-3 rounded-xl flex flex-col justify-between aspect-[3/4] hover:shadow-md transition cursor-pointer shrink-0 w-36">
+                        <div>
+                            <div class="flex justify-between items-start mb-2">
+                                <span class="text-[8px] text-gray-600 font-medium">22/05/2026</span>
+                                <i data-lucide="sticky-note" class="w-3 h-3 text-gray-800"></i>
+                            </div>
+                            <h3 class="font-bold text-gray-900 text-sm mb-2">6 Days to Go</h3>
+                            <p class="text-[8px] text-gray-700 leading-relaxed line-clamp-4">
+                                Just 6 more days to go! 🎉
+                            </p>
+                        </div>
+                        <div class="flex items-center gap-1 text-[8px] text-gray-600 font-semibold mt-2">
+                            <i data-lucide="clock" class="w-3 h-3"></i>
+                            <span>02:15 PM</span>
+                        </div>
+                    </div>
+
+                    <!-- 5 Days to Go -->
+                    <div class="bg-[#F9DBDB] p-3 rounded-xl flex flex-col justify-between aspect-[3/4] hover:shadow-md transition cursor-pointer shrink-0 w-36">
+                        <div>
+                            <div class="flex justify-between items-start mb-2">
+                                <span class="text-[8px] text-gray-600 font-medium">23/05/2026</span>
+                                <i data-lucide="sticky-note" class="w-3 h-3 text-gray-800"></i>
+                            </div>
+                            <h3 class="font-bold text-gray-900 text-sm mb-2">5 Days to Go</h3>
+                            <p class="text-[8px] text-gray-700 leading-relaxed line-clamp-4">
+                                Only 5 days left! Can't wait! 💕
+                            </p>
+                        </div>
+                        <div class="flex items-center gap-1 text-[8px] text-gray-600 font-semibold mt-2">
+                            <i data-lucide="clock" class="w-3 h-3"></i>
+                            <span>06:30 PM</span>
+                        </div>
+                    </div>
+
+                    <!-- 4 Days to Go -->
+                    <div class="bg-[#E8E288] p-3 rounded-xl flex flex-col justify-between aspect-[3/4] hover:shadow-md transition cursor-pointer shrink-0 w-36">
+                        <div>
+                            <div class="flex justify-between items-start mb-2">
+                                <span class="text-[8px] text-gray-600 font-medium">24/05/2026</span>
+                                <i data-lucide="sticky-note" class="w-3 h-3 text-gray-800"></i>
+                            </div>
+                            <h3 class="font-bold text-gray-900 text-sm mb-2">4 Days to Go</h3>
+                            <p class="text-[8px] text-gray-700 leading-relaxed line-clamp-4">
+                                Getting closer! 🎈
+                            </p>
+                        </div>
+                        <div class="flex items-center gap-1 text-[8px] text-gray-600 font-semibold mt-2">
+                            <i data-lucide="clock" class="w-3 h-3"></i>
+                            <span>11:00 AM</span>
+                        </div>
+                    </div>
+
+                    <!-- 3 Days to Go -->
+                    <div class="bg-[#E59797] p-3 rounded-xl flex flex-col justify-between aspect-[3/4] hover:shadow-md transition cursor-pointer shrink-0 w-36">
+                        <div>
+                            <div class="flex justify-between items-start mb-2">
+                                <span class="text-[8px] text-gray-600 font-medium">25/05/2026</span>
+                                <i data-lucide="sticky-note" class="w-3 h-3 text-gray-800"></i>
+                            </div>
+                            <h3 class="font-bold text-gray-900 text-sm mb-2">3 Days to Go</h3>
+                            <p class="text-[8px] text-gray-700 leading-relaxed line-clamp-4">
+                                Almost there! 🎂
+                            </p>
+                        </div>
+                        <div class="flex items-center gap-1 text-[8px] text-gray-600 font-semibold mt-2">
+                            <i data-lucide="clock" class="w-3 h-3"></i>
+                            <span>03:45 PM</span>
+                        </div>
+                    </div>
+
+                    <!-- 2 Days to Go -->
+                    <div class="bg-[#79B4DC] p-3 rounded-xl flex flex-col justify-between aspect-[3/4] hover:shadow-md transition cursor-pointer shrink-0 w-36">
+                        <div>
+                            <div class="flex justify-between items-start mb-2">
+                                <span class="text-[8px] text-gray-600 font-medium">26/05/2026</span>
+                                <i data-lucide="sticky-note" class="w-3 h-3 text-gray-800"></i>
+                            </div>
+                            <h3 class="font-bold text-gray-900 text-sm mb-2">2 Days to Go</h3>
+                            <p class="text-[8px] text-gray-700 leading-relaxed line-clamp-4">
+                                Just 2 more days! So excited! 🌟
+                            </p>
+                        </div>
+                        <div class="flex items-center gap-1 text-[8px] text-gray-600 font-semibold mt-2">
+                            <i data-lucide="clock" class="w-3 h-3"></i>
+                            <span>08:20 PM</span>
+                        </div>
+                    </div>
+
+                    <!-- 1 Day to Go -->
+                    <div class="bg-[#D3E5F4] p-3 rounded-xl flex flex-col justify-between aspect-[3/4] hover:shadow-md transition cursor-pointer shrink-0 w-36">
+                        <div>
+                            <div class="flex justify-between items-start mb-2">
+                                <span class="text-[8px] text-gray-600 font-medium">27/05/2026</span>
+                                <i data-lucide="sticky-note" class="w-3 h-3 text-gray-800"></i>
+                            </div>
+                            <h3 class="font-bold text-gray-900 text-sm mb-2">1 Day to Go</h3>
+                            <p class="text-[8px] text-gray-700 leading-relaxed line-clamp-4">
+                                Tomorrow is the big day! 🎉🎊
+                            </p>
+                        </div>
+                        <div class="flex items-center gap-1 text-[8px] text-gray-600 font-semibold mt-2">
+                            <i data-lucide="clock" class="w-3 h-3"></i>
+                            <span>10:00 PM</span>
+                        </div>
+                    </div>
+
+                    <!-- New Note Card -->
+                    <div class="border-2 border-dashed border-gray-300 rounded-xl flex flex-col items-center justify-center aspect-[3/4] cursor-pointer hover:border-gray-400 transition bg-transparent shrink-0 w-36">
+                        <i data-lucide="file-plus" class="w-5 h-5 text-gray-700 mb-1"></i>
+                        <span class="text-[10px] font-semibold text-gray-700">New Note</span>
+                    </div>
                 </div>
             </div>
         </section>

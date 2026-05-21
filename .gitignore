@@ -5,6 +5,7 @@
 *.swo
 .DS_Store
 Thumbs.db
+.puku
 
 # Optional: add any build outputs if you add them later
 # dist/
