@@ -1,49 +1,21 @@
 # AGENTS.md
 
-Simple static HTML project - no build system, tests, or complex tooling.
+Simple static HTML project — no build system, tests, or complex tooling.
 
-## Project Structure
+## Running
 
-```
-/                    # Root
-├── index.html       # Main entry point
-├── css/
-│   └── styles.css   # Custom styles
-├── js/
-│   └── app.js       # Main application logic
-├── components/      # Modular UI components (loaded dynamically)
-│   ├── archive-popup.html
-│   ├── birthday-locked-popup.html
-│   ├── birthday-password-popup.html
-│   ├── calendar-modal.html
-│   ├── gifts-popup.html
-│   ├── memories-popup.html
-│   ├── menu-dropdown.html
-│   ├── surprise-popup.html
-│   └── trash-popup.html
-└── images/
-    ├── canvas.png
-    └── image.png
+```bash
+python -m http.server 8000     # serve locally (fetch() components require HTTP)
 ```
 
-## Tech Stack
+Open `http://localhost:8000` — `file://` won't load modals (components loaded via `fetch()` into `#components-container`).
 
-- Tailwind CSS (via CDN)
-- Lucide Icons (via CDN)
-- Inter font (Google Fonts)
+## Key Facts
 
-## Running the Project
-
-1. Serve locally (required for component loading):
-   ```bash
-   python -m http.server 8000
-   ```
-2. Open `http://localhost:8000` in browser (serves index.html)
-
-**Note**: Components are loaded via fetch(). Opening directly as `file://` won't load modals.
-
-## Notes
-
-- Brand name in UI is "REHAN" (logo on line 21-24)
-- Birthday corner password: `2580`
-- Contains JavaScript interactivity (calendar, items management, birthday countdown)
+- **Entry point:** `index.html` → `js/app.js` (init order: load components → init modals → init birthday countdown)
+- **Birthday:** May 28, 2026 — unlocked via password `2580` → shows live countdown
+- **Brand:** "REHAN" (logo in sidebar header)
+- **Deployed:** Netlify (README badge) — no CI config in repo
+- **Icons:** Lucide — call `lucide.createIcons()` after dynamically adding HTML
+- **Styling:** Tailwind CSS + `css/styles.css` (modal transitions, scrollbar-hide, mobile touch)
+- **Components:** 9 HTML files in `components/` (gifts, surprise, memories, archive, trash, calendar, menu dropdown, birthday password/locked popups)

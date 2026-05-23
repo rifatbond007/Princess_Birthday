@@ -22,11 +22,11 @@ A beautifully designed personal planning and note-taking web application.
 
 ## Getting Started
 
-Simply open `princess plan.html` in your web browser. No installation or server required.
+Open `index.html` in your web browser. No installation or server required.
 
 ```bash
 # Just open the file directly
-open princess plan.html
+open index.html
 ```
 
 ## Design
